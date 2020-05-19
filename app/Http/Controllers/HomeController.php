@@ -36,7 +36,22 @@ class HomeController extends Controller
     /***
      * login ar
      */
-    public function loginar(){
+    public function loginar() {
         return view('login.login_ar');
     }
+
+    /***
+     * register fr
+     */
+    public function registerfr() {
+        return view('register.register_fr');
+    }
+
+    /***
+     * register ar
+     */
+    public function registerar() {
+        return view('register.register_ar');
+    }
+
 }

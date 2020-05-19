@@ -51,11 +51,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        /*return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
+        ]);*/
     }
 
     /**
@@ -65,6 +65,12 @@ class RegisterController extends Controller
      * @return \App\User
      */
     public function register(Request $request) {
+
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8'],
+        ]);
 
         $user = new User();
         $user->name = $request->name;
@@ -77,7 +83,7 @@ class RegisterController extends Controller
             //send mail
             MailController::sendSignupEmail($user->name, $user->email, $user->verification_code);
             //show a message
-            return redirect()->back()->with(session()->flash('alert-success', 'Your account has been created. Please emil for verification LINK. '));
+            return redirect()->back()->with(session()->flash('alert-success', 'We\'ll send an email to '.$user->email.' in 10 second. Open it up to activate your account.'));
         }
         return redirect()->back()->with(session()->flash('alert-danger', 'Opps something is wrong'));
 

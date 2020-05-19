@@ -35,6 +35,10 @@ Route::get('logout', 'Auth\LoginController@logout', function () {
 
 Route::get('/login/fr', 'HomeController@loginfr')->name('loginfr');
 
+Route::get('/register/fr', 'HomeController@registerfr')->name('registerfr');
+
+Route::get('/register/ar', 'HomeController@registerar')->name('registerar');
+
 Route::get('/login/ar', 'HomeController@loginar')->name('loginar');
 
 Route::get('/verify','Auth\RegisterController@verifyUser')->name('verify.user');
