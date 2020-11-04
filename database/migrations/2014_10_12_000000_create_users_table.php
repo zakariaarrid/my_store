@@ -21,6 +21,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('verification_code')->nullable();
             $table->integer('id_verified')->default(0);
+            $table->string('site_commerce_id')->default(0);
+            $table->string('site_gestions_id')->default(0);
             $table->integer('type_subscription_id')->default(0);
             $table->rememberToken();
             $table->timestamps();

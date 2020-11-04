@@ -104,11 +104,11 @@ class RegisterController extends Controller
 
             $user->save();
 
-            return redirect()->route('login')->with(session()->flash('alert-sussess', 'Your account is verified. Please login!'));
+            return redirect()->route('loginfr')->with(session()->flash('alert-success', 'Your account is verified. Please login!'));
 
         }
 
-        return redirect()->route('login')->with(session()->flash('alert-danger', 'Invalid code '));
+        return redirect()->route('loginfr')->with(session()->flash('alert-danger', 'Invalid code '));
 
     }
 }

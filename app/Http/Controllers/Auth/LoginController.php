@@ -45,13 +45,15 @@ class LoginController extends Controller
     }
     public function authenticate(Request $request)
     {
+
         $field = filter_var($request->email, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
 
         $request->merge([$field => $request->email]);
 
         if (Auth::attempt(['email' => $request->email, 'password' => $request->password, 'id_verified' => '1']))
-            return 'ok';
-        else return 'nok';
+            return Auth::user();
+        else return redirect()->back()->with(session()->flash('alert-success-login', 'Votre email ou mots de passe incorrect'));
+
 
     }
 

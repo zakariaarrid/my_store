@@ -754,6 +754,12 @@
                     <div class="row justify-content-center pt-5 pt-sm-5 pt-md-5 pt-lg-0">
                         <div class="col-md-6 col-lg-5">
                             <div class="card login-signup-card shadow-lg mb-0">
+                                @foreach(['danger','warning','success','info','success-login'] as $msg )
+                                    @if(Session::has('alert-'.$msg))
+                                        <p class="alert alert-{{$msg}}" style="width: 90%;margin: 0 auto;margin-top: 27px;font-size: 9pt;">{{ Session::get('alert-'.$msg) }}
+                                        </p>
+                                    @endif
+                                @endforeach
                                 <div class="card-body px-md-5 py-5">
                                     <div class="mb-5">
                                         <h5 class="h3">Login</h5>
@@ -769,7 +775,7 @@
                                                 <div class="input-icon">
                                                     <span class="ti-email color-primary"></span>
                                                 </div>
-                                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                                <input id="email" type="email" placeholder="Entrer votre email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                                 @error('email')
                                                 <span class="invalid-feedback" role="alert">
@@ -794,7 +800,7 @@
                                                 <div class="input-icon">
                                                     <span class="ti-lock color-primary"></span>
                                                 </div>
-                                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                                <input id="password" type="password" placeholder="Entrer votre mots de passe" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                                                 @error('password')
                                                 <span class="invalid-feedback" role="alert">

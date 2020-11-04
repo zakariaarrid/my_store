@@ -753,6 +753,15 @@
             <div class="row justify-content-center pt-5 pt-sm-5 pt-md-5 pt-lg-0">
                 <div class="col-md-6 col-lg-5">
                     <div class="card login-signup-card shadow-lg mb-0">
+                        @foreach(['danger','warning','success','info'] as $msg )
+                            @if(Session::has('alert-'.$msg))
+                                <p class="alert alert-{{$msg}}" style="width: 90%;margin: 0 auto;margin-top: 27px;font-size: 9pt;">{{ Session::get('alert-'.$msg) }}
+                                <!--<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>-->
+                                </p>
+                            @endif
+                        @endforeach
                         <div class="card-body px-md-5 py-5">
                             <div class="mb-5">
                                 <h5 class="h3">Login</h5>
